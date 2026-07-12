@@ -13,7 +13,7 @@ import sys
 
 # ============================= CONFIG ======================================
 INPUT = "contributions.json"
-OUTPUT = "contrib-heatmap.svg"
+OUTPUT_BASE = "contrib-heatmap"   # writes {OUTPUT_BASE}-light.svg and -dark.svg
 
 CELL = 11        # cell size, px
 GAP = 3          # gap between cells, px
@@ -57,13 +57,7 @@ def streaks(days):
     return current, longest
 
 
-def main() -> None:
-    static = os.environ.get("STATIC") == "1"
-    if not os.path.exists(INPUT):
-        sys.exit(f"[heatmap] missing {INPUT} -- run fetch_contributions.py first")
-    with open(INPUT) as f:
-        days = json.load(f)
-
+def render(days, palette, fg, dim, static: bool) -> str:
     total = sum(d["count"] for d in days)
     current, longest = streaks(days)
 
@@ -86,13 +80,9 @@ def main() -> None:
     height = top + 7 * (CELL + GAP) + 46
 
     css = f"""
-    text {{ font: 10px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; fill: {DIM_LIGHT}; }}
-    .stat {{ font-size: 11px; fill: {FG_LIGHT}; }}
-    {"".join(f".l{i}{{fill:{c}}}" for i, c in enumerate(LIGHT))}
-    @media (prefers-color-scheme: dark) {{
-      text {{ fill: {DIM_DARK}; }} .stat {{ fill: {FG_DARK}; }}
-      {"".join(f".l{i}{{fill:{c}}}" for i, c in enumerate(DARK))}
-    }}
+    text {{ font: 10px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; fill: {dim}; }}
+    .stat {{ font-size: 11px; fill: {fg}; }}
+    {"".join(f".l{i}{{fill:{c}}}" for i, c in enumerate(palette))}
     """
     if not static:
         css += """
@@ -157,13 +147,29 @@ def main() -> None:
         )
     parts.append(f'<text x="{lx + 5 * (CELL + GAP) + 4}" y="{fy}">More</text>')
     parts.append("</svg>")
+    return "\n".join(parts), total, current, longest
 
-    with open(OUTPUT, "w") as f:
-        f.write("\n".join(parts))
-    print(
-        f"[heatmap] wrote {OUTPUT}: {total} contributions, "
-        f"streak {current}d (longest {longest}d), {len(weeks)} weeks"
+
+def main() -> None:
+    static = os.environ.get("STATIC") == "1"
+    if not os.path.exists(INPUT):
+        sys.exit(f"[heatmap] missing {INPUT} -- run fetch_contributions.py first")
+    with open(INPUT) as f:
+        days = json.load(f)
+
+    themes = (
+        ("light", LIGHT, FG_LIGHT, DIM_LIGHT),
+        ("dark", DARK, FG_DARK, DIM_DARK),
     )
+    for theme, palette, fg, dim in themes:
+        svg, total, current, longest = render(days, palette, fg, dim, static)
+        path = f"{OUTPUT_BASE}-{theme}.svg"
+        with open(path, "w") as f:
+            f.write(svg)
+        print(
+            f"[heatmap] wrote {path}: {total} contributions, "
+            f"streak {current}d (longest {longest}d)"
+        )
 
 
 if __name__ == "__main__":

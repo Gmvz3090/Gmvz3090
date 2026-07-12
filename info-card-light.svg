@@ -4,10 +4,6 @@
     .fg { fill: #24292f; } .dim { fill: #57606a; }
     .frame { stroke: #d0d7de; fill: none; }
     .bar { fill: #d0d7de; fill-opacity: 0.35; }
-    @media (prefers-color-scheme: dark) {
-      .fg { fill: #c9d1d9; } .dim { fill: #8b949e; }
-      .frame { stroke: #30363d; } .bar { fill: #30363d; fill-opacity: 0.5; }
-    }
     
     .line { opacity: 0; animation: reveal 0.4s ease-out forwards; }
     @keyframes reveal { from { opacity: 0; transform: translateX(-6px); }

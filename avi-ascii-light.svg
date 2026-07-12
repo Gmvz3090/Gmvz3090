@@ -5,7 +5,6 @@
       fill: #24292f;
       white-space: pre;
     }
-    @media (prefers-color-scheme: dark) { text { fill: #c9d1d9; } }
     
     .row {
       clip-path: inset(0 100% 0 0);

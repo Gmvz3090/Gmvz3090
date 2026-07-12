@@ -38,21 +38,16 @@ TYPE_STAGGER = 0.18   # seconds between each row appearing
 FG_LIGHT, DIM_LIGHT, BORDER_LIGHT = "#24292f", "#57606a", "#d0d7de"
 FG_DARK, DIM_DARK, BORDER_DARK = "#c9d1d9", "#8b949e", "#30363d"
 
-OUTPUT = "info-card.svg"
+OUTPUT_BASE = "info-card"   # writes {OUTPUT_BASE}-light.svg and -dark.svg
 # ===========================================================================
 
 
-def main() -> None:
-    static = os.environ.get("STATIC") == "1"
+def render(fg: str, dim: str, border: str, bar_opacity: float, static: bool) -> str:
     css = f"""
     text {{ font: {FONT_SIZE}px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }}
-    .fg {{ fill: {FG_LIGHT}; }} .dim {{ fill: {DIM_LIGHT}; }}
-    .frame {{ stroke: {BORDER_LIGHT}; fill: none; }}
-    .bar {{ fill: {BORDER_LIGHT}; fill-opacity: 0.35; }}
-    @media (prefers-color-scheme: dark) {{
-      .fg {{ fill: {FG_DARK}; }} .dim {{ fill: {DIM_DARK}; }}
-      .frame {{ stroke: {BORDER_DARK}; }} .bar {{ fill: {BORDER_DARK}; fill-opacity: 0.5; }}
-    }}
+    .fg {{ fill: {fg}; }} .dim {{ fill: {dim}; }}
+    .frame {{ stroke: {border}; fill: none; }}
+    .bar {{ fill: {border}; fill-opacity: {bar_opacity}; }}
     """
     if not static:
         css += """
@@ -100,9 +95,21 @@ def main() -> None:
 <text x="{W // 2}" y="23" text-anchor="middle" class="dim">{html.escape(HOST)}: ~/about</text>
 {chr(10).join(body)}
 </svg>"""
-    with open(OUTPUT, "w") as f:
-        f.write(svg)
-    print(f"[card] wrote {OUTPUT} ({W}x{height}, {visible} rows)")
+    return svg, height, visible
+
+
+def main() -> None:
+    static = os.environ.get("STATIC") == "1"
+    themes = (
+        ("light", FG_LIGHT, DIM_LIGHT, BORDER_LIGHT, 0.35),
+        ("dark", FG_DARK, DIM_DARK, BORDER_DARK, 0.5),
+    )
+    for theme, fg, dim, border, bar_opacity in themes:
+        svg, height, visible = render(fg, dim, border, bar_opacity, static)
+        path = f"{OUTPUT_BASE}-{theme}.svg"
+        with open(path, "w") as f:
+            f.write(svg)
+        print(f"[card] wrote {path} ({W}x{height}, {visible} rows)")
 
 
 if __name__ == "__main__":
