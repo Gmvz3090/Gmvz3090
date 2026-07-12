@@ -21,9 +21,9 @@ RADIUS = 2       # cell corner radius
 COL_STAGGER = 0.018   # seconds between successive week-columns appearing
 DAY_STAGGER = 0.004   # extra delay per weekday inside a column
 
-# Monochrome ramps, level 0..4 (GitHub's data-level).
-LIGHT = ["#ebedf0", "#c6cbd1", "#959da5", "#586069", "#24292f"]
-DARK = ["#161b22", "#30363d", "#6e7681", "#b1bac4", "#f0f6fc"]
+# Color ramps, level 0..4 (GitHub's data-level). Classic GitHub greens.
+LIGHT = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"]
+DARK = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
 
 FG_LIGHT, DIM_LIGHT = "#24292f", "#57606a"
 FG_DARK, DIM_DARK = "#c9d1d9", "#8b949e"
