@@ -1,0 +1,3 @@
+# Used by the daily GitHub Action (fetch_contributions.py + render_heatmap_svg.py)
+requests
+beautifulsoup4
