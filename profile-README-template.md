@@ -1,10 +1,10 @@
 <div align="center">
 
-# Franciszek Malko
+# {{NAME}}
 
-**SWE intern @ soppo**
+**{{TAGLINE}}**
 
-[LinkedIn](https://www.linkedin.com/in/franciszek-malko-a8120231b) &nbsp;&middot;&nbsp; [Instagram](https://www.instagram.com/franek.malko)
+[LinkedIn]({{LINKEDIN_URL}}) &nbsp;&middot;&nbsp; [Instagram]({{INSTAGRAM_URL}})
 
 </div>
 

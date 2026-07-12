@@ -1,0 +1,6 @@
+# One-time local image prep (prep_photo.py + make_ascii_svg.py + make_info_card.py)
+pillow
+numpy
+opencv-python-headless
+rembg
+onnxruntime

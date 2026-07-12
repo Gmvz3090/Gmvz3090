@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="402" viewBox="0 0 560 402" role="img" aria-label="info card">
+<style>
+    text { font: 15px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    .fg { fill: #24292f; } .dim { fill: #57606a; }
+    .frame { stroke: #d0d7de; fill: none; }
+    .bar { fill: #d0d7de; fill-opacity: 0.35; }
+    @media (prefers-color-scheme: dark) {
+      .fg { fill: #c9d1d9; } .dim { fill: #8b949e; }
+      .frame { stroke: #30363d; } .bar { fill: #30363d; fill-opacity: 0.5; }
+    }
+    
+    .line { opacity: 0; animation: reveal 0.4s ease-out forwards; }
+    @keyframes reveal { from { opacity: 0; transform: translateX(-6px); }
+                        to { opacity: 1; transform: none; } }
+    </style>
+<rect x="1.5" y="1.5" width="557" height="399" rx="10" class="frame" stroke-width="1.5"/>
+<rect x="1.5" y="1.5" width="557" height="34" rx="10" class="bar"/>
+<rect x="1.5" y="20" width="557" height="16" class="bar"/>
+<circle cx="22" cy="18.5" r="5.5" class="frame" stroke-width="1.2"/>
+<circle cx="42" cy="18.5" r="5.5" class="frame" stroke-width="1.2"/>
+<circle cx="62" cy="18.5" r="5.5" class="frame" stroke-width="1.2"/>
+<text x="280" y="23" text-anchor="middle" class="dim">franek@soppo: ~/about</text>
+<g class="line" style="animation-delay:0.30s"><text x="28" y="78" class="dim">name</text><text x="146" y="78" class="dim">::</text><text x="172" y="78" class="fg">Franciszek Malko</text></g>
+<g class="line" style="animation-delay:0.48s"><text x="28" y="102" class="dim">role</text><text x="146" y="102" class="dim">::</text><text x="172" y="102" class="fg">SWE intern @ soppo</text></g>
+<g class="line" style="animation-delay:0.66s"><text x="28" y="126" class="dim">location</text><text x="146" y="126" class="dim">::</text><text x="172" y="126" class="fg">Poland</text></g>
+<g class="line" style="animation-delay:0.84s"><text x="28" y="162" class="dim">languages</text><text x="146" y="162" class="dim">::</text><text x="172" y="162" class="fg">C++ / Python / JavaScript</text></g>
+<g class="line" style="animation-delay:1.02s"><text x="28" y="186" class="dim">stack</text><text x="146" y="186" class="dim">::</text><text x="172" y="186" class="fg">React / Node / NumPy / OpenCV</text></g>
+<g class="line" style="animation-delay:1.20s"><text x="28" y="210" class="dim">interests</text><text x="146" y="210" class="dim">::</text><text x="172" y="210" class="fg">ML from first principles, telemetry</text></g>
+<g class="line" style="animation-delay:1.38s"><text x="28" y="246" class="dim">building</text><text x="146" y="246" class="dim">::</text><text x="172" y="246" class="fg">PureNN -- neural net in raw C++</text></g>
+<g class="line" style="animation-delay:1.56s"><text x="28" y="270" class="dim">shipped</text><text x="146" y="270" class="dim">::</text><text x="172" y="270" class="fg">GetAnomaly -- satellite telemetry app</text></g>
+<g class="line" style="animation-delay:1.74s"><text x="28" y="306" class="dim">linkedin</text><text x="146" y="306" class="dim">::</text><text x="172" y="306" class="fg">in/franciszek-malko-a8120231b</text></g>
+<g class="line" style="animation-delay:1.92s"><text x="28" y="330" class="dim">instagram</text><text x="146" y="330" class="dim">::</text><text x="172" y="330" class="fg">@franek.malko</text></g>
+<g class="line" style="animation-delay:2.10s"><text x="28" y="366"><tspan class="dim">$</tspan><tspan class="fg" dx="8">&#9608;</tspan></text></g>
+</svg>
