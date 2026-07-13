@@ -18,7 +18,7 @@ ROWS = [
     ("location", "Poland"),
     None,
     ("languages", "Node.js / C++ / Python"),
-    ("stack", "React / Node / NumPy / OpenCV"),
+    ("stack", "React / Node / NumPy / Express"),
     ("interests", "ML from first principles, telemetry"),
     None,
     ("building", "PureNN -- neural net in raw C++"),
