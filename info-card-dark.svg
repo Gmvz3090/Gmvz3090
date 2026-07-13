@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="560" height="402" viewBox="0 0 560 402" role="img" aria-label="info card">
 <style>
     text { font: 15px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
-    .fg { fill: #c9d1d9; } .dim { fill: #8b949e; }
-    .frame { stroke: #30363d; fill: none; }
-    .bar { fill: #30363d; fill-opacity: 0.5; }
+    .fg { fill: #f0f6fc; } .dim { fill: #adbac7; }
+    .frame { stroke: #444c56; fill: none; }
+    .bar { fill: #444c56; fill-opacity: 0.5; }
     
     .line { opacity: 0; animation: reveal 0.4s ease-out forwards; }
     @keyframes reveal { from { opacity: 0; transform: translateX(-6px); }

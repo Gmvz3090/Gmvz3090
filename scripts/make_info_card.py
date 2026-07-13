@@ -36,7 +36,7 @@ LABEL_W = 118    # px reserved for the label column
 TYPE_STAGGER = 0.18   # seconds between each row appearing
 
 FG_LIGHT, DIM_LIGHT, BORDER_LIGHT = "#24292f", "#57606a", "#d0d7de"
-FG_DARK, DIM_DARK, BORDER_DARK = "#c9d1d9", "#8b949e", "#30363d"
+FG_DARK, DIM_DARK, BORDER_DARK = "#f0f6fc", "#adbac7", "#444c56"
 
 OUTPUT_BASE = "info-card"   # writes {OUTPUT_BASE}-light.svg and -dark.svg
 # ===========================================================================

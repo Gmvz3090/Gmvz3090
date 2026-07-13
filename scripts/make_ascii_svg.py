@@ -25,13 +25,13 @@ COLS = 78            # characters per row (resolution of the portrait)
 CHAR_ASPECT = 0.52   # width/height of a monospace glyph cell
 
 CONTRAST = 1.35      # >1 pushes mids apart; tune until the face reads well
-GAMMA = 0.85         # <1 brightens mids, >1 darkens them
+GAMMA = 0.72         # <1 brightens mids, >1 darkens them
 WHITE_FLOOR = 0.06   # luminance below this renders as blank space
 
 CHARSET = " .:-=+*#%@"   # dark -> bright ramp (index 0 must be a space)
 
 FG_LIGHT = "#24292f"     # ink color on light backgrounds
-FG_DARK = "#c9d1d9"      # ink color on dark backgrounds
+FG_DARK = "#ffffff"      # ink color on dark backgrounds
 
 FONT_SIZE = 10           # px; cell height derives from this
 ROW_TYPE_SECONDS = 0.05  # how long each row takes to "type" in
