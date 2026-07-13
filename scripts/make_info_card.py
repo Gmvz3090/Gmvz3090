@@ -17,7 +17,7 @@ ROWS = [
     ("role", "SWE intern @ soppo"),
     ("location", "Poland"),
     None,
-    ("languages", "C++ / Python / JavaScript"),
+    ("languages", "Node.js / C++ / Python"),
     ("stack", "React / Node / NumPy / OpenCV"),
     ("interests", "ML from first principles, telemetry"),
     None,
