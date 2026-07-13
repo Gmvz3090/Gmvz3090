@@ -6,7 +6,9 @@ Usage:
     python scripts/make_ascii_svg.py            # animated (blank at t=0)
     STATIC=1 python scripts/make_ascii_svg.py   # final frame, no animation
 
-Output: avi-ascii.svg
+Output: avi-ascii-light.svg + avi-ascii-dark.svg. Two files because
+Safari ignores prefers-color-scheme media queries inside SVGs rendered
+via <img>; the README picks the right one with a <picture> element.
 """
 import html
 import os
@@ -17,19 +19,19 @@ from PIL import Image
 
 # ============================= CONFIG ======================================
 INPUT = "source-prepped.png"
-OUTPUT = "avi-ascii.svg"
+OUTPUT_BASE = "avi-ascii"   # writes {OUTPUT_BASE}-light.svg and -dark.svg
 
 COLS = 78            # characters per row (resolution of the portrait)
 CHAR_ASPECT = 0.52   # width/height of a monospace glyph cell
 
 CONTRAST = 1.35      # >1 pushes mids apart; tune until the face reads well
-GAMMA = 0.85         # <1 brightens mids, >1 darkens them
+GAMMA = 0.72         # <1 brightens mids, >1 darkens them
 WHITE_FLOOR = 0.06   # luminance below this renders as blank space
 
 CHARSET = " .:-=+*#%@"   # dark -> bright ramp (index 0 must be a space)
 
 FG_LIGHT = "#24292f"     # ink color on light backgrounds
-FG_DARK = "#c9d1d9"      # ink color on dark backgrounds
+FG_DARK = "#ffffff"      # ink color on dark backgrounds
 
 FONT_SIZE = 10           # px; cell height derives from this
 ROW_TYPE_SECONDS = 0.05  # how long each row takes to "type" in
@@ -54,12 +56,7 @@ def to_grid(path: str) -> list[str]:
     return ["".join(CHARSET[i] for i in row) for row in idx]
 
 
-def main() -> None:
-    static = os.environ.get("STATIC") == "1"
-    if not os.path.exists(INPUT):
-        sys.exit(f"[ascii] missing {INPUT} -- run prep_photo.py first")
-
-    grid = to_grid(INPUT)
+def render(grid: list[str], fg: str, static: bool) -> str:
     cell_h = FONT_SIZE + 1
     cell_w = FONT_SIZE * CHAR_ASPECT / 0.52 * 0.6
     width = round(COLS * cell_w + 20)
@@ -68,10 +65,9 @@ def main() -> None:
     css = f"""
     text {{
       font: {FONT_SIZE}px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-      fill: {FG_LIGHT};
+      fill: {fg};
       white-space: pre;
     }}
-    @media (prefers-color-scheme: dark) {{ text {{ fill: {FG_DARK}; }} }}
     """
     if not static:
         css += f"""
@@ -103,10 +99,20 @@ def main() -> None:
             f'<text x="10" y="{10 + (len(grid) + 1) * cell_h}" class="cursor">&#9608;</text>'
         )
     lines.append("</svg>")
+    return "\n".join(lines)
 
-    with open(OUTPUT, "w") as f:
-        f.write("\n".join(lines))
-    print(f"[ascii] wrote {OUTPUT} ({COLS}x{len(grid)} chars, static={static})")
+
+def main() -> None:
+    static = os.environ.get("STATIC") == "1"
+    if not os.path.exists(INPUT):
+        sys.exit(f"[ascii] missing {INPUT} -- run prep_photo.py first")
+
+    grid = to_grid(INPUT)
+    for theme, fg in (("light", FG_LIGHT), ("dark", FG_DARK)):
+        path = f"{OUTPUT_BASE}-{theme}.svg"
+        with open(path, "w") as f:
+            f.write(render(grid, fg, static))
+        print(f"[ascii] wrote {path} ({COLS}x{len(grid)} chars, static={static})")
 
 
 if __name__ == "__main__":
