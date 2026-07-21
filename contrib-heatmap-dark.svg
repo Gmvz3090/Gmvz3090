@@ -388,8 +388,9 @@
 <rect x="746" y="100" width="11" height="11" rx="2" class="c l1" style="animation-delay:0.938s"/>
 <rect x="746" y="114" width="11" height="11" rx="2" class="c l0" style="animation-delay:0.942s"/>
 <rect x="760" y="30" width="11" height="11" rx="2" class="c l1" style="animation-delay:0.936s"/>
-<rect x="760" y="44" width="11" height="11" rx="2" class="c l0" style="animation-delay:0.940s"/>
-<text x="32" y="154" class="stat">106 contributions in the last year&#160;&#160;&#183;&#160;&#160;current streak 1d&#160;&#160;&#183;&#160;&#160;longest 9d</text>
+<rect x="760" y="44" width="11" height="11" rx="2" class="c l2" style="animation-delay:0.940s"/>
+<rect x="760" y="58" width="11" height="11" rx="2" class="c l0" style="animation-delay:0.944s"/>
+<text x="32" y="154" class="stat">112 contributions in the last year&#160;&#160;&#183;&#160;&#160;current streak 2d&#160;&#160;&#183;&#160;&#160;longest 9d</text>
 <text x="604" y="154">Less</text>
 <rect x="638" y="144" width="11" height="11" rx="2" class="l0"/>
 <rect x="652" y="144" width="11" height="11" rx="2" class="l1"/>
