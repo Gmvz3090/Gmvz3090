@@ -2,7 +2,7 @@
 
 # Franciszek Malko
 
-**SWE intern @ soppo**
+** ex 2xSWE intern @ soppo/soppo space**
 
 [LinkedIn](https://www.linkedin.com/in/franciszek-malko-a8120231b) &nbsp;&middot;&nbsp; [Instagram](https://www.instagram.com/franek.malko)
 
