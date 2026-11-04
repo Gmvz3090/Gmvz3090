@@ -14,7 +14,7 @@ HOST = "franek@soppo"
 # Each entry is (label, value) -- or None for a blank separator line.
 ROWS = [
     ("name", "Franciszek Malko"),
-    ("role", "SWE intern @ soppo"),
+    ("role", "ex 2x SWE intern @ soppo/soppo space"),
     ("location", "Poland"),
     None,
     ("languages", "Node.js / C++ / Python"),
@@ -22,7 +22,6 @@ ROWS = [
     ("interests", "ML from first principles, telemetry"),
     None,
     ("building", "PureNN -- neural net in raw C++"),
-    ("shipped", "GetAnomaly -- satellite telemetry app"),
     None,
     ("linkedin", "in/franciszek-malko-a8120231b"),
     ("instagram", "@franek.malko"),
